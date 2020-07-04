@@ -106,6 +106,7 @@ installnetworkutils() { \
   brew install tcptrace
   brew install pwgen
   brew install xz
+  brew install wget
 }
 
 installsystemutils() { \
@@ -175,8 +176,3 @@ which node > /dev/null && alreadyinstallmessage "Node" || installnode
 [ -d /usr/local/Cellar/ack ] && alreadyinstallmessage "NetworkUtils" || installnetworkutils
 [ -d /usr/local/Cellar/cmake ] && alreadyinstallmessage "SystemUtils" || installsystemutils
 
-#########################################################################
-################################ APPS ###################################
-#########################################################################
-[ -d /Applications/Alfred*.app ] && alreadyinstallmessage "Alfred" || brew cask install --appdir="/Applications" alfred
-[ -d /Applications/Sublime\ Text*.app ] && alreadyinstallmessage "Sublime Text" || brew cask install --appdir="/Applications" sublime-text
