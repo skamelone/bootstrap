@@ -159,6 +159,13 @@ emsg() { \
 # # install node and neovim support
 # which node > /dev/null && alreadyinstallmessage "Node" || installnode
 
+# install node and neovim support
+which node > /dev/null && alreadyinstallmessage "Node" || installnode
+
+# Clone nvim config
+cloneconfig
+
+
 #########################################################################
 ################################ APPS ###################################
 #########################################################################
@@ -168,8 +175,3 @@ emsg() { \
 [ -d /usr/local/Cellar/ack ] && alreadyinstallmessage "NetworkUtils" || installnetworkutils
 [ -d /usr/local/Cellar/cmake ] && alreadyinstallmessage "SystemUtils" || installsystemutils
 
-# Clone nvim config
-cloneconfig
-
-# install node and neovim support
-which node > /dev/null && alreadyinstallmessage "Node" || installnode
