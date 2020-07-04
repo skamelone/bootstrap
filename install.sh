@@ -22,7 +22,7 @@ echo 'Installing Bootstrap'
 #installhomebrew
 
 # Install Python
-installpython
+which pip3 > /dev/null && echo "pip installed, moving on..." || installpython
 
 # Install git
 # which brew > /dev/null && "Git installed" || installgit
