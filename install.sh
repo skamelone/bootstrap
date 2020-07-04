@@ -45,7 +45,7 @@ moveoldnvim() { \
 cloneconfig() { \
   [ -d "$HOME/.config/nvim" ] && moveoldnvim 
   echo "Cloning Neovim configuration"
-  git clone https://github.com/skamelone/nvim.git ~/.config/nvim
+  git clone https://github.com/skamelone/nvim-config.git ~/.config/nvim
 }
 
 printf '\nInstalling Bootstrap\n'
