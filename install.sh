@@ -3,19 +3,19 @@
 set -o nounset # error when referencing undefined variable
 set -o errexit # exit when error fails
 
-installHomeBrew() { \
+installhomebrew() { \
   /bin/bash -c "$(curl -fssl https://raw.githubusercontent.com/homebrew/install/master/install.sh)"
   echo "Homebrew installed"
 }
 
-installGit() { \
+installgit() { \
   brew install git
 }
 
 echo 'Installing Bootstrap'
 
 # Install Homebrew
-installHomeBrew
+installhomebrew
 
 # Install git
-which brew > /dev/null && "Git installed" || installGit
+which brew > /dev/null && "Git installed" || installgit
