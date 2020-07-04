@@ -12,10 +12,17 @@ installgit() { \
   brew install git
 }
 
+installpython() { \
+  brew install python3
+}
+
 echo 'Installing Bootstrap'
 
 # Install Homebrew
-installhomebrew
+#installhomebrew
+
+# Install Python
+installpython
 
 # Install git
-which brew > /dev/null && "Git installed" || installgit
+# which brew > /dev/null && "Git installed" || installgit
