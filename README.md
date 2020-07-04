@@ -1,3 +1,12 @@
+# Environment preparation
+
+- Set those variables:
+  ```
+  export XCODE_INSTALL_USER=[itunes@email]
+  export XCODE_INSTALL_PASSWORD=[itunes@password]
+  export XCODE_DESIRED_VERSION=[version]
+  ```
+
 # Installation
 
 - Execute command:
