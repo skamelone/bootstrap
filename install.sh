@@ -5,6 +5,7 @@ set -o errexit # exit when error fails
 
 installhomebrew() { \
   /bin/bash -c "$(curl -fssl https://raw.githubusercontent.com/homebrew/install/master/install.sh)"
+  echo "Homebrew installed"
 }
 
 installGit() { \
@@ -14,7 +15,7 @@ installGit() { \
 echo 'Installing Bootstrap'
 
 # Install Homebrew
-which bash > /dev/null && "Homebrew installed" || installHomeBrew
+installHomeBrew
 
 # Install git
 which brew > /dev/null && "Git installed" || installGit
