@@ -3,6 +3,12 @@
 set -o nounset # error when referencing undefined varinstallextrapackagenvimiable
 set -o errexit # exit when error fails
 
+# Various log colors
+RESET=$(tput sgr0)
+GREEN=$(tput setaf 2)
+RED=$(tput setaf 1)
+BOLD=$(tput bold)
+
 # Ask for the administrator password upfront
 sudo -v
 # Keep-alive: update existing `sudo` time stamp until the script has finished.
@@ -45,7 +51,7 @@ installnvim() { \
 installextrapackagenvim() { \
   emsg "Installing nvim extra packages..."
   brew install ripgrep fzf ranger
-  $(brew --prefix)/opt/fzf/install
+  $(brew --prefix)/opt/fzf/install --all
 }
 
 moveoldnvim() { \
@@ -65,8 +71,8 @@ installnode() { \
    # Install extensions
   mkdir -p ~/.config/coc/extensions
   cd ~/.config/coc/extensions
-  [ ! -f package.json ] && emsg '{"dependencies":{}}'> package.json
-  sudo npm install coc-explorer coc-snippets coc-json coc-actions --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
+  [ ! -f package.json ] && echo '{"dependencies":{}}'> package.json
+  npm install coc-explorer coc-snippets coc-json coc-actions --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
   npm install --global fkill-cli
 }
 
@@ -118,56 +124,50 @@ installsystemutils() { \
 #########################################################################
 
 alreadyinstallmessage() { \
-   printf "$1 already installed\t✅\n" | expand -t 60
+   printf "✅ $1 already installed\n" | expand -t 60
 }
 
 emsg() { \
-  RESET=$(tput sgr0)
-  GREEN=$(tput setaf 2)
-  BOLD=$(tput bold)
-  printf "%s%s%s%s\n" $BOLD $GREEN $1 $RESET
+  printf "\n\n⚙️%s%s%s%s\n\n" $BOLD $GREEN "$1" $RESET
+}
+
+etitle() { \
+  printf "\n%s%s%s%s\n" $BOLD $RED "$1" $RESET
+  printf "%s%s%s%s\n" $BOLD $RED "**********************" $RESET
 }
 
 #########################################################################
 ################################ MAIN ###################################
 #########################################################################
 
-# printf '\nInstalling Bootstrap\n'
-# printf '**********************\n\n'
+etitle "Installing Bootstrap"
 
-# # Install git
-# which git > /dev/null && alreadyinstallmessage "Git" || installgit
+# Install Homebrew
+which brew > /dev/null && alreadyinstallmessage "Homebrew" || installhomebrew
 
-# # Install Homebrew
-# which brew > /dev/null && alreadyinstallmessage "Homebrew" || installhomebrew
+# Install Python
+which pip3 > /dev/null && alreadyinstallmessage "Pip" || installpython
 
-# # Install Python
-# which pip3 > /dev/null && alreadyinstallmessage "Pip" || installpython
+# Install pynvim
+pip3 list | grep pynvim > /dev/null && alreadyinstallmessage "pynvim" || installpynvim
 
-# # Install pynvim
-# pip3 list | grep pynvim > /dev/null && alreadyinstallmessage "pynvim" || installpynvim
+# Install Neovim
+which nvim > /dev/null && alreadyinstallmessage "nvim" || installnvim
 
-# # Install Neovim
-# which nvim > /dev/null && alreadyinstallmessage "nvim" || installnvim
+# Install Nvim extrapackage
+which fzf > /dev/null && alreadyinstallmessage "nvim extras" || installextrapackagenvim
 
-# # Install Nvim extrapackage
-# which fzf > /dev/null && alreadyinstallmessage "nvim extras" || installextrapackagenvim
+# Install git
+[ -d /usr/local/Cellar/git-extras ] && alreadyinstallmessage "Git" || installgit
 
 # # Clone nvim config
-# clonenvimconfig
+[ -f $HOME/.config/nvim/latest ] && alreadyinstallmessage "Latest Neovim config" || clonenvimconfig
 
 # # install node and neovim support
-# which node > /dev/null && alreadyinstallmessage "Node" || installnode
-
-# install node and neovim support
 which node > /dev/null && alreadyinstallmessage "Node" || installnode
 
-# Clone nvim config
-cloneconfig
-
-
 #########################################################################
-################################ APPS ###################################
+############################### SYSTEM ##################################
 #########################################################################
 
 [ -d /usr/local/Cellar/coreutils ] && alreadyinstallmessage "CoreUtils" || installcoreutils
