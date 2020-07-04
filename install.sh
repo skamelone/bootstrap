@@ -20,7 +20,7 @@ installpython() { \
 
 installpynvim() { \
   echo "Installing pynvim..."
-  pip3 install pynvim
+  pip3 install pynvim --user
 }
 
 installnvim() { \
@@ -48,6 +48,16 @@ cloneconfig() { \
   git clone https://github.com/skamelone/nvim-config.git ~/.config/nvim
 }
 
+installnode() { \
+  echo "Installing Node"
+  brew install node
+   # Install extensions
+  mkdir -p ~/.config/coc/extensions
+  cd ~/.config/coc/extensions
+  [ ! -f package.json ] && echo '{"dependencies":{}}'> package.json
+  sudo npm install coc-explorer coc-snippets coc-json coc-actions --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
+}
+
 printf '\nInstalling Bootstrap\n'
 printf '**********************\n\n'
 
@@ -71,3 +81,6 @@ which fzf > /dev/null && alreadyinstallmessage "nvim extras" || installextrapack
 
 # Clone nvim config
 cloneconfig
+
+# install node and neovim support
+which node > /dev/null && alreadyinstallmessage "Node" || installnode
