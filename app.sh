@@ -42,7 +42,6 @@ installvim() { \
   git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
   set rtp+=/usr/local/opt/fzf
   curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-  printf "\n**** Start Vim and run :PlugInstall + :PlugClean\n"
 }
 
 installhammerspoon() { \
@@ -85,6 +84,12 @@ installzzz() { \
   unzip zzz.zip
   mv Zzz.app /Applications/
   rm zzz.zip
+}
+
+install1password() { \
+  emsg "1Password installing..."
+  brew cask install --appdir="/Applications" 1Password
+  brew cask install --appdir="/Applications" 1password-cli
 }
 
 #########################################################################
@@ -143,9 +148,6 @@ etitle "Installing Apps"
 # Install Charles
 [ -d /Applications/Charles.app ] && alreadyinstallmessage "Charles" || brew cask install --appdir="/Applications" charles
 
-# Install 1Password
-[ -d /Applications/1Password*.app ] && alreadyinstallmessage "1Password" || brew cask install --appdir="/Applications" 1password-cli
-
 # Install Fantastical
 [ -d /Applications/Fantastical*.app ] && alreadyinstallmessage "Fantastical" || brew cask install --appdir="/Applications" fantastical
 
@@ -179,4 +181,6 @@ etitle "Installing Apps"
 # Install Pcloud
 [ -d /Applications/pCloud*.app ] && alreadyinstallmessage "pCloud" || installpcloud
 
-printf "\n**** Reinstall manually osfuse ****\n"
+# Install 1Password
+[ -d /Applications/1Password*.app ] && alreadyinstallmessage "1Password" || install1password
+

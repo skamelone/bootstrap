@@ -21,3 +21,8 @@ bash <(curl -s https://raw.githubusercontent.com/skamelone/bootstrap/master/osx.
 
 # Install Terminal
 bash <(curl -s https://raw.githubusercontent.com/skamelone/bootstrap/master/terminal.sh)
+
+printf "\n\n****************************************************\n"
+printf " Start Vim and run :PlugInstall + :PlugClean\n"
+printf " Reinstall manually osfuse\n"
+printf "****************************************************\n"
