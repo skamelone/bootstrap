@@ -19,7 +19,11 @@ installxcode() { \
 installrbenv() { \
   brew install rbenv
   LINE='eval "$(rbenv init -)"'
-契grep -q "$LINE" ~/.extra || echo "$LINE" >> ~/.extra
+  grep -q "$LINE" ~/.extra || echo "$LINE" >> ~/.extra
+}
+
+installsdkman() { \
+  curl -s "https://get.sdkman.io" | bash
 }
 
 #########################################################################
@@ -66,3 +70,6 @@ etitle "Installing Dev environment"
 
 # # Install Rbenv
 # which rbenv > /dev/null && alreadyinstallmessage "Rbenv" || installrbenv
+
+# Install sdkMan
+which sdk > /dev/null && alreadyinstallmessage "Sdkman" || installsdkman
