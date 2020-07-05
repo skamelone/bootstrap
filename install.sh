@@ -121,8 +121,8 @@ installsystemutils() { \
   brew install mas
   brew install libxml2 --force
   brew install libxslt --force
-  pip3 install glances
-  pip3 install pycp
+  pip3 install glances --user
+  pip3 install pycp --user
 }
 
 #########################################################################
