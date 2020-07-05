@@ -115,10 +115,13 @@ installsystemutils() { \
   brew install binutils
   brew install dex2jar
   brew install cmake
+  brew install pkg-config
+  brew install libffi
   brew install htop
   brew install mas
   brew install libxml2 --force
   brew install libxslt --force
+  pip3 install glances
 }
 
 #########################################################################

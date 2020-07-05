@@ -67,54 +67,65 @@ etitle() { \
 
 etitle "Installing Apps"
 
-## Install Alfred
+# # Install Alfred
 # [ -d /Applications/Alfred*.app ] && alreadyinstallmessage "Alfred" || installalfred
 
-## Install Sublime Text
+# # Install Sublime Text
 # [ -d /Applications/Sublime\ Text*.app ] && alreadyinstallmessage "Sublime Text" || installsublimetext
 
-## Install Sublime Merge
+# # Install Sublime Merge
 # [ -d /Applications/Sublime\ Merge*.app ] && alreadyinstallmessage "Sublime Merge" || brew cask install --appdir="/Applications" sublime-merge
 
-## Install Sublime Firefox
+# # Install Sublime Firefox
 # [ -d /Applications/Firefox.app ] && alreadyinstallmessage "Firefox" || brew cask install --appdir="/Applications" firefox
 
-## Install Sublime Evernote
+# # Install Sublime Evernote
 # [ -d /Applications/Evernote.app ] && alreadyinstallmessage "Evernote" || brew cask install --appdir="/Applications" evernote
 
-## Install Spotify
+# # Install Spotify
 # [ -d /Applications/Spotify.app ] && alreadyinstallmessage "Spotify" || brew cask install --appdir="/Applications" spotify
 
-## Install Hammerspoon
+# # Install Hammerspoon
 # [ -d /Applications/Hammerspoon.app ] && alreadyinstallmessage "Hammerspoon" || brew cask install --appdir="/Applications" hammerspoon
 
-## Install Dropbox
+# # Install Dropbox
 # [ -d /Applications/Dropbox.app ] && alreadyinstallmessage "Dropbox" || brew cask install --appdir="/Applications" dropbox
 
-## Install Karabiner
+# # Install Karabiner
 # [ -d /Applications/Karabiner-Elements.app ] && alreadyinstallmessage "Karabiner-Elements" || brew cask install --appdir="/Applications" karabiner-elements
 
-## Install Bartender
+# # Install Bartender
 # [ -d /Applications/Bartender*.app ] && alreadyinstallmessage "Bartender" || installbartender
 
-## Install Dash
+# # Install Dash
 # [ -d /Applications/Dash.app ] && alreadyinstallmessage "Dash" || brew cask install --appdir="/Applications" dash
 
-## Install Charles
+# # Install Charles
 # [ -d /Applications/Charles.app ] && alreadyinstallmessage "Charles" || brew cask install --appdir="/Applications" charles
 
-## Install 1Password
+# # Install 1Password
 # [ -d /Applications/1Password*.app ] && alreadyinstallmessage "1Password" || brew cask install --appdir="/Applications" 1password-cli
 
-## Install Fantastical
+# # Install Fantastical
 # [ -d /Applications/Fantastical*.app ] && alreadyinstallmessage "Fantastical" || brew cask install --appdir="/Applications" fantastical
 
-## Install Fantastical
+# # Install Fantastical
 # [ -d /Applications/Kaleidoscope.app ] && alreadyinstallmessage "Kaleidoscope" || brew cask install --appdir="/Applications" kaleidoscope
 
-## Install Amphetamine
+# # Install Amphetamine
 # [ -d /Applications/Amphetamine.app ] && alreadyinstallmessage "Amphetamine" || brew cask install --appdir="/Applications" amphetamine
 
-# Install vim
-[ -f $HOME/.vim/autoload/plug.vim  ] && alreadyinstallmessage "Vim" || installvim
+# # Install vim
+# [ -f $HOME/.vim/autoload/plug.vim  ] && alreadyinstallmessage "Vim" || installvim
 
+# Install BeardedSpice
+[ -d /Applications/BeardedSpice.app ] && alreadyinstallmessage "BeardedSpice" || brew cask install --appdir="/Applications" beardedspice
+
+# Install PostMan
+[ -d /Applications/Postman.app ] && alreadyinstallmessage "Postman" || brew cask install --appdir="/Applications" postman
+
+# Install Keka
+[ -d /Applications/Keka.app ] && alreadyinstallmessage "Keka" || brew cask install --appdir="/Applications" keka
+
+# Install Hocus Focus
+[ -d /Applications/Hocus*.app ] && alreadyinstallmessage "Hocus Focus" || brew cask install --appdir="/Applications" hocus-focus
