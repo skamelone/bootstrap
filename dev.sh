@@ -13,7 +13,7 @@ installxcode() { \
   emsg "Xcode installing1..."
   sudo gem install xcode-install
   xcversion install $XCODE_DESIRED_VERSION 
-  mv ~/Downloads/Xcode* /Applications
+  mv ~/Downloads/Xcode* /Applications/
 }
 
 installrbenv() { \
