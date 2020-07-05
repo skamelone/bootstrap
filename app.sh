@@ -130,9 +130,6 @@ etitle "Installing Apps"
 # Install Fantastical
 [ -d /Applications/Kaleidoscope.app ] && alreadyinstallmessage "Kaleidoscope" || brew cask install --appdir="/Applications" kaleidoscope
 
-# Install Amphetamine
-[ -d /Applications/Amphetamine.app ] && alreadyinstallmessage "Amphetamine" || brew cask install --appdir="/Applications" amphetamine
-
 # Install vim
 [ -f $HOME/.vim/autoload/plug.vim  ] && alreadyinstallmessage "Vim" || installvim
 
