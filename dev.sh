@@ -16,13 +16,21 @@ installxcode() { \
 }
 
 installrbenv() { \
+  emsg "Rbenv installing..."
   brew install rbenv
   LINE='eval "$(rbenv init -)"'
   grep -q "$LINE" ~/.extra || echo "$LINE" >> ~/.extra
 }
 
 installsdkman() { \
+  emsg "SdkMan installing..."
   curl -s "https://get.sdkman.io" | bash
+}
+
+installandroid() { \
+  emsg "Android Studio installing..."
+  brew cask install --appdir="/Applications" android-studio
+  brew install android-sdk
 }
 
 #########################################################################
@@ -72,3 +80,6 @@ which rbenv > /dev/null && alreadyinstallmessage "Rbenv" || installrbenv
 
 # Install sdkMan
 [ -d $HOME/.sdkman ] && alreadyinstallmessage "Sdkman" || installsdkman
+
+# Install android-studio
+[ -d /Applications/Android\ Studio.app ] && alreadyinstallmessage "Android studio" || installandroid
