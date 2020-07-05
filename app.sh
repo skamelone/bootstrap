@@ -29,6 +29,7 @@ installsublimetext() { \
   mv ./Preferences.sublime-settings $HOME/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/
   unzip ayu.zip
   mv ayu $HOME/Library/Application\ Support/Sublime\ Text\ 3/Packages/
+  rm ayu.zip
 }
 
 installvim() { \
@@ -42,6 +43,23 @@ installvim() { \
   set rtp+=/usr/local/opt/fzf
   curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
   printf "\n**** Start Vim and run :PlugInstall + :PlugClean\n"
+}
+
+installfonts() { \
+  emsg "Fonts installing..."
+  wget https://raw.githubusercontent.com/skamelone/bootstrap/master/config/fonts/fonts.zip
+  unzip fonts.zip
+  mv fonts/*.ttf $HOME/Library/Fonts/
+  rm -fr fonts
+  rm fonts.zip
+}
+
+installzzz() { \
+  emsg "zzz installing..."
+  wget https://raw.githubusercontent.com/skamelone/bootstrap/master/apps/zzz.zip
+  unzip zzz.zip
+  mv Zzz.app /Applications/
+  rm zzz.zip
 }
 
 #########################################################################
@@ -132,3 +150,9 @@ etitle "Installing Apps"
 
 # Install Pcloud
 [ -d /Applications/pCloud*.app ] && alreadyinstallmessage "pCloud" || brew cask install pcloud-drive.rb
+
+# Install Fonts
+[ -f $HOME/Library/Fonts/FiraCode-Bold.ttf  ] && alreadyinstallmessage "Fonts" || installfonts
+
+# Install zzz
+[ -d /Applications/Zzz.app ] && alreadyinstallmessage "zzz" || installzzz
