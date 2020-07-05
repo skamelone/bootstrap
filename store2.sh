@@ -39,15 +39,16 @@ etitle() { \
 ################################ DEVS ###################################
 #########################################################################
 
-etitle "Installing Store apps"
+etitle "Installing Store apps\n"
 
 [ -d /Applications/PopClip.app ] && alreadyinstallmessage "PopClip" || installpopclip
 [ -d /Applications/DevCleaner.app ] && alreadyinstallmessage "DevCleaner" || mas lucky DevCleaner
-[ -d /Applications/Dark\ Mode\ for\ Safari.app ] && alreadyinstallmessage "Dark Mode" || mas lucky "Dark Mode for Safari"
+[ -d /Applications/Dark\ Mode\ for\ Safari.app ] && alreadyinstallmessage "Dark Mode" || mas lucky "Dark Mode"
 [ -d /Applications/Quiver.app ] && alreadyinstallmessage "Quiver" || mas lucky Quiver
 [ -d /Applications/Amphetamine.app ] && alreadyinstallmessage "Amphetamine" || mas install 937984704
 [ -d /Applications/Pikka.app ] && alreadyinstallmessage "Pikka" || mas lucky Pikka
 [ -d /Applications/daisydisk.app ] && alreadyinstallmessage "DaisyDisk" || mas lucky daisydisk
 [ -d /Applications/pixelmator.app ] && alreadyinstallmessage "pixelmator" || mas lucky pixelmator
+[ -d /Applications/Canary*.app ] && alreadyinstallmessage "Canary Email" || mas lucky "Canary Mail"
 [ -d /Applications/Canary*.app ] && alreadyinstallmessage "Canary Email" || mas lucky "Canary Mail"
 
