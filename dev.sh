@@ -10,7 +10,7 @@ RED=$(tput setaf 1)
 BOLD=$(tput bold)
 
 installxcode() { \
-  emsg "Xcode installing1..."
+  emsg "Xcode installing..."
   sudo gem install xcode-install
   xcversion install $XCODE_DESIRED_VERSION 
   mv ~/Downloads/Xcode* /Applications/

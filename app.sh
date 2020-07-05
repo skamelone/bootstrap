@@ -45,6 +45,25 @@ installvim() { \
   printf "\n**** Start Vim and run :PlugInstall + :PlugClean\n"
 }
 
+installhammerspoon() { \
+  emsg "Hammerspoon installing..."
+  brew cask install --appdir="/Applications" hammerspoon
+  wget https://raw.githubusercontent.com/skamelone/bootstrap/master/config/hammerspoon/hammerspoon.zip
+  unzip hammerspoon.zip
+  mv hammerspoon .hammerspoon
+  mv .hammerspoon $HOME/
+  rm hammerspoon.zip
+}
+
+installkarabiner() { \
+  emsg "Hammerspoon installing..."
+  brew cask install --appdir="/Applications" karabiner-elements
+  wget https://raw.githubusercontent.com/skamelone/bootstrap/master/config/karabiner/karabiner.zip
+  unzip karabiner.zip
+  mv karabiner $HOME/.config/
+  rm karabiner.zip
+}
+
 installfonts() { \
   emsg "Fonts installing..."
   wget https://raw.githubusercontent.com/skamelone/bootstrap/master/config/fonts/fonts.zip
@@ -111,7 +130,7 @@ etitle "Installing Apps\n"
 [ -d /Applications/Spotify.app ] && alreadyinstallmessage "Spotify" || brew cask install --appdir="/Applications" spotify
 
 # Install Hammerspoon
-[ -d /Applications/Hammerspoon.app ] && alreadyinstallmessage "Hammerspoon" || brew cask install --appdir="/Applications" hammerspoon
+[ -d /Applications/Hammerspoon.app ] && alreadyinstallmessage "Hammerspoon" || installhammerspoon 
 
 # Install Dropbox
 [ -d /Applications/Dropbox.app ] && alreadyinstallmessage "Dropbox" || brew cask install --appdir="/Applications" dropbox
@@ -156,7 +175,7 @@ etitle "Installing Apps\n"
 [ -d /Applications/Zzz.app ] && alreadyinstallmessage "zzz" || installzzz
 
 # Install Karabiner
-[ -d /Applications/Karabiner-Elements.app ] && alreadyinstallmessage "Karabiner-Elements" || brew cask install --appdir="/Applications" karabiner-elements
+[ -d /Applications/Karabiner-Elements.app ] && alreadyinstallmessage "Karabiner-Elements" || installkarabiner 
 
 # Install Pcloud
 [ -d /Applications/pCloud*.app ] && alreadyinstallmessage "pCloud" || installpcloud
