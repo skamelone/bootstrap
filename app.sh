@@ -54,6 +54,13 @@ installfonts() { \
   rm fonts.zip
 }
 
+installpcloud() { \
+  emsg "pCloud installing..."
+  wget https://gist.github.com/tomgross/bae4f30023272d8c8c0d920b62720c6b#file-pcloud-drive-rb
+  brew cask install pcloud-drive.rb
+  rm pcloud-drive.rb
+}
+
 installzzz() { \
   emsg "zzz installing..."
   wget https://raw.githubusercontent.com/skamelone/bootstrap/master/apps/zzz.zip
@@ -143,7 +150,7 @@ etitle "Installing Apps"
 [ -d /Applications/Hocus*.app ] && alreadyinstallmessage "Hocus Focus" || brew cask install --appdir="/Applications" hocus-focus
 
 # Install Pcloud
-[ -d /Applications/pCloud*.app ] && alreadyinstallmessage "pCloud" || brew cask install pcloud-drive.rb
+[ -d /Applications/pCloud*.app ] && alreadyinstallmessage "pCloud" || installpcloud
 
 # Install Fonts
 [ -f $HOME/Library/Fonts/FiraCode-Bold.ttf  ] && alreadyinstallmessage "Fonts" || installfonts
