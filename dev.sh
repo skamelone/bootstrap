@@ -71,4 +71,4 @@ which ruby-build > /dev/null && alreadyinstallmessage "Ruby-build" || brew insta
 which rbenv > /dev/null && alreadyinstallmessage "Rbenv" || installrbenv
 
 # Install sdkMan
-which sdk > /dev/null && alreadyinstallmessage "Sdkman" || installsdkman
+[ -d $HOME/.sdkman ] && alreadyinstallmessage "Sdkman" || installsdkman
