@@ -122,6 +122,7 @@ installsystemutils() { \
   brew install libxml2 --force
   brew install libxslt --force
   pip3 install glances
+  pip3 install pycp
 }
 
 #########################################################################

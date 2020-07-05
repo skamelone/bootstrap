@@ -9,6 +9,11 @@ GREEN=$(tput setaf 2)
 RED=$(tput setaf 1)
 BOLD=$(tput bold)
 
+installrbenv() { \
+  brew install rbenv
+  LINE='eval "$(rbenv init -)"'
+契grep -q "$LINE" ~/.extra || echo "$LINE" >> ~/.extra
+}
 #########################################################################
 ################################ UTIL ###################################
 #########################################################################
@@ -32,3 +37,23 @@ etitle() { \
 
 etitle "Installing Dev environment"
 
+# Install Swiftlint
+which swiftlint > /dev/null && alreadyinstallmessage "Swiftlint" || brew install swiftlint
+
+# Install Adr-List
+which adr-list > /dev/null && alreadyinstallmessage "ADR Tools" || brew install adr-tools
+
+# Install SwiftGen
+which swiftgen > /dev/null && alreadyinstallmessage "SwiftGen" || brew install swiftgen
+
+# Install Carthage
+which carthage > /dev/null && alreadyinstallmessage "Carthage" || brew install carthage
+
+# Install Fastlane
+which fastlane > /dev/null && alreadyinstallmessage "Fastlane" || brew cask install fastlane
+
+# Install Ruby-build
+which ruby-build > /dev/null && alreadyinstallmessage "Ruby-build" || brew install ruby-build
+
+# Install Rbenv
+which rbenv > /dev/null && alreadyinstallmessage "Rbenv" || installrbenv
