@@ -90,7 +90,7 @@ etitle() { \
 ################################ APPS ###################################
 #########################################################################
 
-etitle "Installing Apps"
+etitle "Installing Apps\n"
 
 # Install Alfred
 [ -d /Applications/Alfred*.app ] && alreadyinstallmessage "Alfred" || installalfred
