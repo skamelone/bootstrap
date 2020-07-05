@@ -1,6 +1,6 @@
 # Environment preparation
 
-- Set those variables:
+- Set these variables:
   ```
   export XCODE_INSTALL_USER=[itunes@email]
   export XCODE_INSTALL_PASSWORD=[itunes@password]
