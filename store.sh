@@ -1,38 +1,42 @@
 #!/usr/bin/env bash
 
-installpopclip { \
+installpopclip() { \
   mas lucky PopClip
   mkdir -p ~/Library/Application\ Support/PopClip/Extensions/
   wget https://raw.githubusercontent.com/skamelone/bootstrap/master/config/popclip/popclip.zip
   unzip popclip.zip
-  mv popclip Popclip
-  mv Popclip/* $HOME/Library/Application\ Support/PopClip/Extensions/
-  rm -fr Popclip
-  rm popclip.zip
+  mv popclip/* $HOME/Library/Application\ Support/PopClip/Extensions/
 }
 
-function doIt() {
-   installpopclip
-   mas lucky DevCleaner
-   mas lucky "Dark Mode"
-   mas lucky Quiver
-   mas lucky Amphetamine
-   mas lucky Pikka
-   mas lucky daisydisk
-   mas lucky pixelmator
-   mas lucky amphetamine
-   mas lucky "Canary Mail"
-   mas install 937984704
+#########################################################################
+################################ UTIL ###################################
+#########################################################################
+
+alreadyinstallmessage() { \
+   printf "✅ $1 already installed\n" | expand -t 60
 }
 
-cd "$(dirname "${BASH_SOURCE}")";
-if [ "$1" == "--force" -o "$1" == "-f" ]; then
-    doIt;
-else
-    read -p "Please signin on the App Store. Press 'y' when it's done? (y/n) " -n 1;
-    echo "";
-    if [[ $REPLY =~ ^[Yy]$ ]]; then
-        doIt;
-    fi;
-fi;
-unset doIt;
+emsg() { \
+  printf "\n\n⚙️  %s%s%s%s\n\n" $BOLD $GREEN "$1" $RESET
+}
+
+etitle() { \
+  printf "\n%s%s%s%s\n" $BOLD $RED "$1" $RESET
+  printf "%s%s%s%s\n" $BOLD $RED "**********************" $RESET
+}
+
+#########################################################################
+################################ DEVS ###################################
+#########################################################################
+
+[ -d /Applications/PopClip.app ] && alreadyinstallmessage "PopClip" || installpopclip
+[ -d /Applications/DevCleaner.app ] && alreadyinstallmessage "DevCleaner" || mas lucky DevCleaner
+[ -d /Applications/Dark*.app ] && alreadyinstallmessage "Dark Mode" || mas lucky "Dark Mode"
+[ -d /Applications/Quiver.app ] && alreadyinstallmessage "Quiver" || mas lucky Quiver
+[ -d /Applications/Amphetamine.app ] && alreadyinstallmessage "Amphetamine" || mas install 937984704
+[ -d /Applications/Pikka.app ] && alreadyinstallmessage "Pikka" || mas lucky Pikka
+[ -d /Applications/daisydisk.app ] && alreadyinstallmessage "DaisyDisk" || mas lucky daisydisk
+[ -d /Applications/pixelmator.app ] && alreadyinstallmessage "pixelmator" || mas lucky pixelmator
+[ -d /Applications/Canary*.app ] && alreadyinstallmessage "Canary Email" || mas lucky "Canary Mail"
+[ -d /Applications/Canary*.app ] && alreadyinstallmessage "Canary Email" || mas lucky "Canary Mail"
+
