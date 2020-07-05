@@ -149,9 +149,6 @@ etitle "Installing Apps"
 # Install Hocus Focus
 [ -d /Applications/Hocus*.app ] && alreadyinstallmessage "Hocus Focus" || brew cask install --appdir="/Applications" hocus-focus
 
-# Install Pcloud
-[ -d /Applications/pCloud*.app ] && alreadyinstallmessage "pCloud" || installpcloud
-
 # Install Fonts
 [ -f $HOME/Library/Fonts/FiraCode-Bold.ttf  ] && alreadyinstallmessage "Fonts" || installfonts
 
@@ -161,3 +158,7 @@ etitle "Installing Apps"
 # Install Karabiner
 [ -d /Applications/Karabiner-Elements.app ] && alreadyinstallmessage "Karabiner-Elements" || brew cask install --appdir="/Applications" karabiner-elements
 
+# Install Pcloud
+[ -d /Applications/pCloud*.app ] && alreadyinstallmessage "pCloud" || installpcloud
+
+printf "\n**** Reinstall manually osfuse ****\n"
