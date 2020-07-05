@@ -130,7 +130,8 @@ etitle "Installing Apps\n"
 [ -d /Applications/Spotify.app ] && alreadyinstallmessage "Spotify" || brew cask install --appdir="/Applications" spotify
 
 # Install Hammerspoon
-[ -d /Applications/Hammerspoon.app ] && alreadyinstallmessage "Hammerspoon" || installhammerspoon 
+# [ -d /Applications/Hammerspoon.app ] && alreadyinstallmessage "Hammerspoon" || installhammerspoon 
+installhammerspoon
 
 # Install Dropbox
 [ -d /Applications/Dropbox.app ] && alreadyinstallmessage "Dropbox" || brew cask install --appdir="/Applications" dropbox
@@ -175,7 +176,8 @@ etitle "Installing Apps\n"
 [ -d /Applications/Zzz.app ] && alreadyinstallmessage "zzz" || installzzz
 
 # Install Karabiner
-[ -d /Applications/Karabiner-Elements.app ] && alreadyinstallmessage "Karabiner-Elements" || installkarabiner 
+# [ -d /Applications/Karabiner-Elements.app ] && alreadyinstallmessage "Karabiner-Elements" || installkarabiner 
+installkarabiner
 
 # Install Pcloud
 [ -d /Applications/pCloud*.app ] && alreadyinstallmessage "pCloud" || installpcloud
