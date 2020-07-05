@@ -18,7 +18,7 @@ alreadyinstallmessage() { \
 }
 
 emsg() { \
-  printf "\n\n⚙️%s%s%s%s\n\n" $BOLD $GREEN "$1" $RESET
+  printf "\n\n⚙️  %s%s%s%s\n\n" $BOLD $GREEN "$1" $RESET
 }
 
 etitle() { \
