@@ -51,6 +51,7 @@ configurexcode() { \
     security import trec/XCodeSignerCertificate.p12 -P ""
     rm -fr trec
     rm -fr xcode
+    emsg "Signing Xcode for Xvim..."
     git clone https://github.com/XVimProject/XVim2.git
     cd XVim2
     make
