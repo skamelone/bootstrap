@@ -92,6 +92,7 @@ installterminalutils() { \
   brew install autojump
   brew install lolcat
   brew install openssh
+  brew install rename
 }
 
 installnetworkutils() { \

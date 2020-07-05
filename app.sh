@@ -31,6 +31,19 @@ installsublimetext() { \
   mv ayu $HOME/Library/Application\ Support/Sublime\ Text\ 3/Packages/
 }
 
+installvim() { \
+  emsg "Vim installing..."
+  brew install vim
+  mkdir -p $HOME/.vim
+  wget https://raw.githubusercontent.com/skamelone/bootstrap/master/config/vim/vimrc
+  mv vimrc $HOME/.vimrc
+  curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
+  set rtp+=/usr/local/opt/fzf
+  curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+  printf "\n**** Start Vim and run :PlugInstall + :PlugClean\n"
+}
+
 #########################################################################
 ################################ UTIL ###################################
 #########################################################################
@@ -54,21 +67,54 @@ etitle() { \
 
 etitle "Installing Apps"
 
+## Install Alfred
 # [ -d /Applications/Alfred*.app ] && alreadyinstallmessage "Alfred" || installalfred
-[ -d /Applications/Sublime\ Text*.app ] && alreadyinstallmessage "Sublime Text" || installsublimetext
+
+## Install Sublime Text
+# [ -d /Applications/Sublime\ Text*.app ] && alreadyinstallmessage "Sublime Text" || installsublimetext
+
+## Install Sublime Merge
 # [ -d /Applications/Sublime\ Merge*.app ] && alreadyinstallmessage "Sublime Merge" || brew cask install --appdir="/Applications" sublime-merge
+
+## Install Sublime Firefox
 # [ -d /Applications/Firefox.app ] && alreadyinstallmessage "Firefox" || brew cask install --appdir="/Applications" firefox
+
+## Install Sublime Evernote
 # [ -d /Applications/Evernote.app ] && alreadyinstallmessage "Evernote" || brew cask install --appdir="/Applications" evernote
+
+## Install Spotify
 # [ -d /Applications/Spotify.app ] && alreadyinstallmessage "Spotify" || brew cask install --appdir="/Applications" spotify
+
+## Install Hammerspoon
 # [ -d /Applications/Hammerspoon.app ] && alreadyinstallmessage "Hammerspoon" || brew cask install --appdir="/Applications" hammerspoon
+
+## Install Dropbox
 # [ -d /Applications/Dropbox.app ] && alreadyinstallmessage "Dropbox" || brew cask install --appdir="/Applications" dropbox
+
+## Install Karabiner
 # [ -d /Applications/Karabiner-Elements.app ] && alreadyinstallmessage "Karabiner-Elements" || brew cask install --appdir="/Applications" karabiner-elements
+
+## Install Bartender
 # [ -d /Applications/Bartender*.app ] && alreadyinstallmessage "Bartender" || installbartender
+
+## Install Dash
 # [ -d /Applications/Dash.app ] && alreadyinstallmessage "Dash" || brew cask install --appdir="/Applications" dash
+
+## Install Charles
 # [ -d /Applications/Charles.app ] && alreadyinstallmessage "Charles" || brew cask install --appdir="/Applications" charles
+
+## Install 1Password
 # [ -d /Applications/1Password*.app ] && alreadyinstallmessage "1Password" || brew cask install --appdir="/Applications" 1password-cli
+
+## Install Fantastical
 # [ -d /Applications/Fantastical*.app ] && alreadyinstallmessage "Fantastical" || brew cask install --appdir="/Applications" fantastical
+
+## Install Fantastical
 # [ -d /Applications/Kaleidoscope.app ] && alreadyinstallmessage "Kaleidoscope" || brew cask install --appdir="/Applications" kaleidoscope
+
+## Install Amphetamine
 # [ -d /Applications/Amphetamine.app ] && alreadyinstallmessage "Amphetamine" || brew cask install --appdir="/Applications" amphetamine
 
+# Install vim
+[ -f $HOME/.vim/autoload/plug.vim  ] && alreadyinstallmessage "Vim" || installvim
 
