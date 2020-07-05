@@ -109,9 +109,6 @@ etitle "Installing Apps"
 # Install Dropbox
 [ -d /Applications/Dropbox.app ] && alreadyinstallmessage "Dropbox" || brew cask install --appdir="/Applications" dropbox
 
-# Install Karabiner
-[ -d /Applications/Karabiner-Elements.app ] && alreadyinstallmessage "Karabiner-Elements" || brew cask install --appdir="/Applications" karabiner-elements
-
 # Install Bartender
 [ -d /Applications/Bartender*.app ] && alreadyinstallmessage "Bartender" || installbartender
 
@@ -153,3 +150,7 @@ etitle "Installing Apps"
 
 # Install zzz
 [ -d /Applications/Zzz.app ] && alreadyinstallmessage "zzz" || installzzz
+
+# Install Karabiner
+[ -d /Applications/Karabiner-Elements.app ] && alreadyinstallmessage "Karabiner-Elements" || brew cask install --appdir="/Applications" karabiner-elements
+
