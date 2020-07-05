@@ -26,6 +26,7 @@ installzsh() { \
   git clone https://github.com/supercrabtree/k $HOME/.oh-my-zsh/plugins/k
   brew install zplug
   brew install fd
+  chmod -R 755 /usr/local/share/zsh
 }
 
 cleanup() { \

@@ -36,22 +36,18 @@ installandroid() { \
 
 configurexcode() { \
   emsg "Configuring Xcode..."
-  read -p "Please start and stop XCode. Is it done? (y/n) " -n 1;
+  read -p "Please start and stop XCode. Create a self-signing certificate named \"xcodesigner\". Is it done? (y/n) " -n 1;
   echo "";
   if [[ $REPLY =~ ^[Yy]$ ]]; then
     sudo xcode-select -s /Applications/Xcode.app
     mkdir -p $HOME/Library/Developer/Xcode/UserData/FontAndColorThemes/
     wget https://raw.githubusercontent.com/skamelone/bootstrap/master/config/xcode/xcode.zip
-    wget https://raw.githubusercontent.com/skamelone/bootstrap/master/config/trec/trec.zip
     unzip xcode.zip
-    unzip trec.zip
     sudo cp -R ./xcode/*.xccolortheme $HOME/Library/Developer/Xcode/UserData/FontAndColorThemes/
     sudo cp -R ./xcode/Empty\ Application.xctemplate /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Templates/Project\ Templates/iOS/Application/
-    security add-certificates trec/XCodeSignerCertificate.cer
-    security import trec/XCodeSignerCertificate.p12 -P ""
-    rm -fr trec
     rm -fr xcode
     emsg "Signing Xcode for Xvim..."
+    sudo codesign -f -s xcodesigner /Applications/Xcode.app
     git clone https://github.com/XVimProject/XVim2.git
     cd XVim2
     make
@@ -110,3 +106,4 @@ which rbenv > /dev/null && alreadyinstallmessage "Rbenv" || installrbenv
 
 # Install android-studio
 [ -d /Applications/Android\ Studio.app ] && alreadyinstallmessage "Android studio" || installandroid
+
