@@ -129,3 +129,6 @@ etitle "Installing Apps"
 
 # Install Hocus Focus
 [ -d /Applications/Hocus*.app ] && alreadyinstallmessage "Hocus Focus" || brew cask install --appdir="/Applications" hocus-focus
+
+# Install Pcloud
+[ -d /Applications/pCloud*.app ] && alreadyinstallmessage "pCloud" || brew cask install pcloud-drive.rb
