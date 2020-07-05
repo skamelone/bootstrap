@@ -13,6 +13,7 @@ installxcode() { \
   emsg "Xcode installing..."
   sudo gem install xcode-install
   xcversion install $XCODE_DESIRED_VERSION 
+  configurexcode
 }
 
 installrbenv() { \
@@ -31,6 +32,31 @@ installandroid() { \
   emsg "Android Studio installing..."
   brew cask install --appdir="/Applications" android-studio
   brew install android-sdk
+}
+
+configurexcode() { \
+  emsg "Configuring Xcode..."
+  read -p "Please start and stop XCode. Is it done? (y/n) " -n 1;
+  echo "";
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
+    sudo xcode-select -s /Applications/Xcode.app
+    mkdir -p $HOME/Library/Developer/Xcode/UserData/FontAndColorThemes/
+    wget https://raw.githubusercontent.com/skamelone/bootstrap/master/config/xcode/xcode.zip
+    wget https://raw.githubusercontent.com/skamelone/bootstrap/master/config/trec/trec.zip
+    unzip xcode.zip
+    unzip trec.zip
+    sudo cp -R ./xcode/*.xccolortheme $HOME/Library/Developer/Xcode/UserData/FontAndColorThemes/
+    sudo cp -R ./xcode/Empty\ Application.xctemplate /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Templates/Project\ Templates/iOS/Application/
+    security add-certificates trec/XCodeSignerCertificate.cer
+    security import trec/XCodeSignerCertificate.p12 -P ""
+    rm -fr trec
+    rm -fr xcode
+    git clone https://github.com/XVimProject/XVim2.git
+    cd XVim2
+    make
+    cd ..
+    rm -fr XVim2
+  fi;
 }
 
 #########################################################################
