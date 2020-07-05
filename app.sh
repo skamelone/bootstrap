@@ -56,7 +56,7 @@ installfonts() { \
 
 installpcloud() { \
   emsg "pCloud installing..."
-  wget https://gist.github.com/tomgross/bae4f30023272d8c8c0d920b62720c6b#file-pcloud-drive-rb
+  wget https://gist.githubusercontent.com/tomgross/bae4f30023272d8c8c0d920b62720c6b/raw/c2a3c2a40cb7ad6d6853a4f4dba78b1461e60ca5/pcloud-drive.rb
   brew cask install pcloud-drive.rb
   rm pcloud-drive.rb
 }
