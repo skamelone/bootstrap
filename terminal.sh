@@ -16,6 +16,15 @@ installiterm() { \
   mv com.googlecode.iterm2.plist $HOME/Library/Preferences/
 }
 
+installrangerconf() { \
+  emsg "Ranger configuration installing..."
+  wget https://raw.githubusercontent.com/skamelone/bootstrap/master/config/ranger/ranger.zip
+  unzip ranger.zip
+  rm -fr $HOME/.config/ranger/
+  mv ranger/ $HOME/.config/
+  rm ranger.zip
+}
+
 installzsh() { \
   emsg "Zsh installing..."
   brew install zsh zsh-completions
@@ -73,6 +82,7 @@ etitle() { \
 etitle "Installing Terminal"
 
 [ -d /Applications/iTerm.app ] > /dev/null && alreadyinstallmessage "iTerm" || installiterm
+installrangerconf
 cleanup
 installzsh
 installzshconf
