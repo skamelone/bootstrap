@@ -31,7 +31,6 @@ installsdkman() { \
 installandroid() { \
   emsg "Android Studio installing..."
   brew cask install --appdir="/Applications" android-studio
-  brew install android-sdk
 }
 
 configurexcode() { \
