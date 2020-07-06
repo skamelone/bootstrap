@@ -37,5 +37,5 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/ska/.sdkman"
-[[ -s "/Users/ska/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/ska/.sdkman/bin/sdkman-init.sh"
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
