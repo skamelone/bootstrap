@@ -19,14 +19,27 @@ installiterm() { \
 installzsh() { \
   emsg "Zsh installing..."
   brew install zsh zsh-completions
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-  sudo git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt"
-  sudo ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
-  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-  git clone https://github.com/supercrabtree/k $HOME/.oh-my-zsh/plugins/k
   brew install zplug
   brew install fd
+  brew install lazygit
   chmod -R 755 /usr/local/share/zsh
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+}
+
+installzshconf() { \
+  emsg "iTerm2 configuration installing..."
+  sudo git clone https://github.com/denysdovhan/spaceship-prompt.git "$HOME/.oh-my-zsh/custom/themes/spaceship-prompt"
+  sudo ln -s "$HOME/.oh-my-zsh/custom/themes/spaceship-prompt/spaceship.zsh-theme" "$HOME/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
+  cd
+  wget https://raw.githubusercontent.com/skamelone/bootstrap/master/config/iterm/zsh.zip
+  wget https://raw.githubusercontent.com/skamelone/bootstrap/master/config/iterm/zshrc
+  mv zshrc .zshrc
+  unzip zsh.zip
+  cp -R zsh $HOME/.config/
+  rm -fr zsh
+  rm zsh.zip
+  git clone https://github.com/zsh-users/zsh-autosuggestions $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+  git clone https://github.com/supercrabtree/k $HOME/.oh-my-zsh/custom/plugins/k
 }
 
 cleanup() { \
@@ -35,15 +48,6 @@ cleanup() { \
   brew upgrade
   brew cleanup
 }
-
-startterm() { \
-  emsg "Zsh starting..."
-  if ! fgrep -q "${BREW_PREFIX}/bin/zsh" /etc/shells; then
-    echo "${BREW_PREFIX}/bin/zsh" | sudo tee -a /etc/shells;
-    chsh -s "${BREW_PREFIX}/bin/zsh";
-  fi;
-}
-
 
 #########################################################################
 ################################ UTIL ###################################
@@ -71,4 +75,4 @@ etitle "Installing Terminal"
 [ -d /Applications/iTerm.app ] > /dev/null && alreadyinstallmessage "iTerm" || installiterm
 cleanup
 installzsh
-startterm
+installzshconf
