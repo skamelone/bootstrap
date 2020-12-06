@@ -88,6 +88,11 @@ installterminalutils() { \
   brew install the_silver_searcher
   brew install ag
   brew install tig
+  brew install gotop
+  brew install tldr
+  brew install bat
+  brew install direnv
+  brew install lab
   brew install tree
   brew install autojump
   brew install lolcat

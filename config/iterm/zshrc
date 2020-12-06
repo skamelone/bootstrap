@@ -15,10 +15,10 @@ plugins=(git pow brew osx extract zsh-autosuggestions history sudo taskwarrior z
 source $ZSH/oh-my-zsh.sh
 
 [ -f $HOME/.config/zsh/aliases.zsh ] && source $HOME/.config/zsh/aliases.zsh
-[ -f $HOME/.config/zsh/functions.zsh ] && source $HOME/.config/zsh/functions.zsh
 [ -f $HOME/.config/zsh/prompt.zsh ] && source $HOME/.config/zsh/prompt.zsh
 [ -f $HOME/.config/zsh/key-mapping.zsh ] && source $HOME/.config/zsh/key-mapping.zsh
 [ -f $HOME/.config/zsh/exports.zsh ] && source $HOME/.config/zsh/exports.zsh
+[ -f $HOME/.config/zsh/functions.zsh ] && source $HOME/.config/zsh/functions.zsh
 
 setopt auto_cd # cd by typing directory name if it's not a command
 setopt auto_list # automatically list choices on ambiguous completion
@@ -39,3 +39,6 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# add KUBECONFIG by ac-platform
+eval "$(direnv hook zsh)"

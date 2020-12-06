@@ -35,6 +35,15 @@ installzsh() { \
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 }
 
+installalacritty() { \
+  emsg "Alacritty installing..."
+  brew cask install alacritty
+  wget https://raw.githubusercontent.com/skamelone/bootstrap/master/config/alacritty/alacritty.zip
+  unzip alacritty.zip
+  mv alacritty $HOME/.config
+  rm alacritty.zip
+}
+
 installzshconf() { \
   emsg "iTerm2 configuration installing..."
   sudo git clone https://github.com/denysdovhan/spaceship-prompt.git "$HOME/.oh-my-zsh/custom/themes/spaceship-prompt"
@@ -86,3 +95,4 @@ installrangerconf
 cleanup
 installzsh
 installzshconf
+installalacritty
