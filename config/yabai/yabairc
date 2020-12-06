@@ -1,0 +1,79 @@
+#!/usr/bin/env sh
+
+yabai -m config status_bar                   on
+yabai -m config status_bar_text_font         "Dank Mono:Regular:12.0"
+yabai -m config status_bar_icon_font         "Font Awesome 5 Pro:Regular:10.0"
+yabai -m config status_bar_background_color  0xff202020
+yabai -m config status_bar_foreground_color  0xffa8a8a8
+yabai -m config status_bar_space_icon_strip  "(1) web" 2 3 4 5 6 7 8 9 10
+yabai -m config status_bar_power_icon_strip   
+yabai -m config status_bar_space_icon        
+yabai -m config status_bar_clock_icon        time
+
+yabai -m config external_bar                 all:26:0
+
+yabai -m config mouse_follows_focus          on
+yabai -m config focus_follows_mouse          autofocus
+yabai -m config window_topmost               off
+yabai -m config window_opacity               on
+yabai -m config window_opacity_duration      0.1
+yabai -m config active_window_opacity        1.0
+yabai -m config normal_window_opacity        0.8
+yabai -m config window_shadow                float
+yabai -m config split_ratio                  0.6
+yabai -m config auto_balance                 off
+yabai -m config mouse_modifier               fn
+yabai -m config mouse_action1                move
+yabai -m config mouse_action2                resize
+
+yabai -m config layout                       bsp
+yabai -m config top_padding                  8 
+yabai -m config bottom_padding               8
+yabai -m config left_padding                 8
+yabai -m config right_padding                8
+yabai -m config window_gap                   8
+
+# Start with no gap or padding for all spaces
+for space in $(yabai -m query --spaces | jq ".[] | .index")
+do
+  yabai -m space $space --toggle padding
+  yabai -m space $space --toggle gap
+done
+
+# Comms
+yabai -m space 1 --label "Comms"
+
+yabai -m rule --add app=Caprine space=^"Comms"
+yabai -m rule --add app=Discord space=^"Comms"
+yabai -m rule --add app=Keybase space=^"Comms"
+yabai -m rule --add app=Mailspring space=^"Comms"
+#yabai -m rule --add app=Slack space=^"Comms"
+#yabai -m rule --add app="zoom.us" space=^"Comms"
+
+# Design
+yabai -m space 2 --label "Design"
+
+yabai -m rule --add app=Figma space=^"Design"
+
+# Code
+yabai -m space 3 --label "Code"
+yabai -m rule --add app=Alacritty space=^"Code"
+
+# Preview
+yabai -m space 3 --label "Preview"
+yabai -m rule --add app=Local space=^"Preview"
+#yabai -m rule --add app="Google Chrome" space=^"Preview"
+
+# Jam
+yabai -m space 5 --label "Jam"
+
+yabai -m rule --add app=Spotify space=^"Jam"
+yabai -m rule --add app=VOX space=^"Jam"
+
+# Other rules
+
+yabai -m rule --add app="System Preferences" manage=off layer=above
+yabai -m rule --add title="Picture-in-Picture" sticky=on opacity=1
+
+echo "yabai configuration loaded.."
+
