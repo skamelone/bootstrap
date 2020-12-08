@@ -14,11 +14,13 @@
 	</dict>
 	<key>Label</key>
 	<string>com.skamelone.limelight</string>
+	<key>LaunchOnlyOnce</key>
+	<true/>
 	<key>ProgramArguments</key>
 	<array>
-		<string>/usr/local/bin/limelight</string>
-		<string>-c</string>
-		<string>/Users/ska/.config/limelight/config</string>
+		<string>sh</string>
+        <string>-c</string>
+		<string>/usr/local/bin/limelight -c ~/.config/limelight/config</string>
 	</array>
 	<key>RunAtLoad</key>
 	<true/>
