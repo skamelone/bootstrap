@@ -1,24 +1,13 @@
 #!/usr/bin/env sh
 
-yabai -m config status_bar                   on
-yabai -m config status_bar_text_font         "Dank Mono:Regular:12.0"
-yabai -m config status_bar_icon_font         "Font Awesome 5 Pro:Regular:10.0"
-yabai -m config status_bar_background_color  0xff202020
-yabai -m config status_bar_foreground_color  0xffa8a8a8
-yabai -m config status_bar_space_icon_strip  "(1) web" 2 3 4 5 6 7 8 9 10
-yabai -m config status_bar_power_icon_strip   
-yabai -m config status_bar_space_icon        
-yabai -m config status_bar_clock_icon        time
-
 yabai -m config external_bar                 all:26:0
-
-yabai -m config mouse_follows_focus          on
-yabai -m config focus_follows_mouse          autofocus
+yabai -m config mouse_follows_focus          off
+yabai -m config focus_follows_mouse          off
 yabai -m config window_topmost               off
 yabai -m config window_opacity               on
 yabai -m config window_opacity_duration      0.1
 yabai -m config active_window_opacity        1.0
-yabai -m config normal_window_opacity        0.8
+yabai -m config normal_window_opacity        1.0
 yabai -m config window_shadow                float
 yabai -m config split_ratio                  0.6
 yabai -m config auto_balance                 off
@@ -44,31 +33,26 @@ done
 yabai -m space 1 --label "Comms"
 
 yabai -m rule --add app=Caprine space=^"Comms"
-yabai -m rule --add app=Discord space=^"Comms"
-yabai -m rule --add app=Keybase space=^"Comms"
-yabai -m rule --add app=Mailspring space=^"Comms"
-#yabai -m rule --add app=Slack space=^"Comms"
-#yabai -m rule --add app="zoom.us" space=^"Comms"
+yabai -m rule --add app=Canary Mail space=^"Comms"
+yabai -m rule --add app=Slack space=^"Comms"
 
 # Design
 yabai -m space 2 --label "Design"
 
-yabai -m rule --add app=Figma space=^"Design"
-
 # Code
 yabai -m space 3 --label "Code"
 yabai -m rule --add app=Alacritty space=^"Code"
+yabai -m rule --add app=Android Studio space=^"Code"
+yabai -m rule --add app=Intellij space=^"Code"
 
 # Preview
 yabai -m space 3 --label "Preview"
 yabai -m rule --add app=Local space=^"Preview"
-#yabai -m rule --add app="Google Chrome" space=^"Preview"
+yabai -m rule --add app=Firefox space=^"Preview"
 
 # Jam
 yabai -m space 5 --label "Jam"
-
 yabai -m rule --add app=Spotify space=^"Jam"
-yabai -m rule --add app=VOX space=^"Jam"
 
 # Other rules
 
