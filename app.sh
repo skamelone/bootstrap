@@ -92,6 +92,45 @@ install1password() { \
   brew cask install --appdir="/Applications" 1password-cli
 }
 
+installyabai() { \
+  emsg "Installing Yabai..."
+  brew install koekeishiya/formulae/yabai
+  sudo yabai --install-sa
+  yabai --load-sa
+  wget https://raw.githubusercontent.com/skamelone/bootstrap/master/config/yabai/yabairc
+  mv yabairc .yabairc
+  mv .yabairc ~/
+  brew services start yabai
+}
+
+installspacebar() { \
+  emsg "Installing Spacebar..."
+  brew install cmacrae/formulae/spacebar
+  wget https://github.com/skamelone/bootstrap/blob/master/config/spacebar/fontawesome-free-5.15.1-desktop.zip?raw=true
+  unzip fontawesome-free-5.15.1-desktop.zip
+  cd fontawesome-free-5.15.1-desktop/otfs/
+  mv *.otf ~/Library/Fonts/
+  cd ../.. ; rm -fr fontawesome-free-5.15.1-desktop
+  wget https://raw.githubusercontent.com/skamelone/bootstrap/master/config/spacebar/spacebarrc
+  mkdir -p ~/.config/spacebar
+  mv spacebarrc ~/.config/spacebar
+}
+
+installlimelight() { \
+  emsg "Installing Limelight..."
+  git clone https://github.com/koekeishiya/limelight.git
+  cd limelight
+  make
+  mv bin/limelight /usr/local/bin
+  cd ..
+  wget https://raw.githubusercontent.com/skamelone/bootstrap/master/config/limelight/config
+  mkdir -p ~/.config/limelight
+  mv config ~/.config/limelight
+  wget https://raw.githubusercontent.com/skamelone/bootstrap/master/config/limelight/com.skamelone.limelight.plist
+  mv com.skamelone.limelight.plist ~/Library/LaunchAgents/
+  launchctl load ~/Library/LaunchAgents/com.skamelone.limelight.plist
+}
+
 #########################################################################
 ################################ UTIL ###################################
 #########################################################################
@@ -183,4 +222,13 @@ etitle "Installing Apps"
 
 # Install 1Password
 [ -d /Applications/1Password*.app ] && alreadyinstallmessage "1Password" || install1password
+
+# Install yabai
+[ -f $HOME/.yabairc  ] && alreadyinstallmessage "Yabai" || installyabai
+
+# Install spacebar
+[ -f $HOME/.config/spacebar/spacebarrc  ] && alreadyinstallmessage "Spacebar" || installspacebar
+
+# Install spacebar
+[ -f $HOME/.config/limelight/config  ] && alreadyinstallmessage "Limelight" || installlimelight
 
