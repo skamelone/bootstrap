@@ -185,28 +185,28 @@ etitle "Installing Apps"
 [ -d /Applications/Dash.app ] && alreadyinstallmessage "Dash" || brew cask install --appdir="/Applications" dash
 
 # Install Charles
-[ -d /Applications/Charles.app ] && alreadyinstallmessage "Charles" || brew cask install --appdir="/Applications" charles
+# [ -d /Applications/Charles.app ] && alreadyinstallmessage "Charles" || brew cask install --appdir="/Applications" charles
 
 # Install Fantastical
 [ -d /Applications/Fantastical*.app ] && alreadyinstallmessage "Fantastical" || brew cask install --appdir="/Applications" fantastical
 
-# Install Fantastical
-[ -d /Applications/Kaleidoscope.app ] && alreadyinstallmessage "Kaleidoscope" || brew cask install --appdir="/Applications" kaleidoscope
+# Install Kaleidoscope
+# [ -d /Applications/Kaleidoscope.app ] && alreadyinstallmessage "Kaleidoscope" || brew cask install --appdir="/Applications" kaleidoscope
 
 # Install vim
 [ -f $HOME/.vim/autoload/plug.vim  ] && alreadyinstallmessage "Vim" || installvim
 
 # Install BeardedSpice
-[ -d /Applications/BeardedSpice.app ] && alreadyinstallmessage "BeardedSpice" || brew cask install --appdir="/Applications" beardedspice
+# [ -d /Applications/BeardedSpice.app ] && alreadyinstallmessage "BeardedSpice" || brew cask install --appdir="/Applications" beardedspice
 
 # Install PostMan
-[ -d /Applications/Postman.app ] && alreadyinstallmessage "Postman" || brew cask install --appdir="/Applications" postman
+# [ -d /Applications/Postman.app ] && alreadyinstallmessage "Postman" || brew cask install --appdir="/Applications" postman
 
 # Install Keka
 [ -d /Applications/Keka.app ] && alreadyinstallmessage "Keka" || brew cask install --appdir="/Applications" keka
 
 # Install Hocus Focus
-[ -d /Applications/Hocus*.app ] && alreadyinstallmessage "Hocus Focus" || brew cask install --appdir="/Applications" hocus-focus
+# [ -d /Applications/Hocus*.app ] && alreadyinstallmessage "Hocus Focus" || brew cask install --appdir="/Applications" hocus-focus
 
 # Install Fonts
 [ -f $HOME/Library/Fonts/FiraCode-Bold.ttf  ] && alreadyinstallmessage "Fonts" || installfonts
@@ -218,7 +218,7 @@ etitle "Installing Apps"
 [ -d /Applications/Karabiner-Elements.app ] && alreadyinstallmessage "Karabiner-Elements" || installkarabiner 
 
 # Install Pcloud
-[ -d /Applications/pCloud*.app ] && alreadyinstallmessage "pCloud" || installpcloud
+#[ -d /Applications/pCloud*.app ] && alreadyinstallmessage "pCloud" || installpcloud
 
 # Install 1Password
 [ -d /Applications/1Password*.app ] && alreadyinstallmessage "1Password" || install1password

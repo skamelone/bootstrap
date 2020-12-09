@@ -43,5 +43,5 @@ etitle() { \
 etitle "Installing Kitty"
 
 # Install Swiftlint
-which kitty > /dev/null && alreadyinstallmessage "Kitty" || installkitty
+# which kitty > /dev/null && alreadyinstallmessage "Kitty" || installkitty
 

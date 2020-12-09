@@ -80,19 +80,19 @@ etitle "Installing Dev environment"
 [ -d /Applications/Xcode.app ] && alreadyinstallmessage "Xcode" || installxcode 
 
 # Install Swiftlint
-which swiftlint > /dev/null && alreadyinstallmessage "Swiftlint" || brew install swiftlint
+# which swiftlint > /dev/null && alreadyinstallmessage "Swiftlint" || brew install swiftlint
 
 # Install Adr-List
 which adr-list > /dev/null && alreadyinstallmessage "ADR Tools" || brew install adr-tools
 
 # Install SwiftGen
-which swiftgen > /dev/null && alreadyinstallmessage "SwiftGen" || brew install swiftgen
+# which swiftgen > /dev/null && alreadyinstallmessage "SwiftGen" || brew install swiftgen
 
 # Install Carthage
-which carthage > /dev/null && alreadyinstallmessage "Carthage" || brew install carthage
+# which carthage > /dev/null && alreadyinstallmessage "Carthage" || brew install carthage
 
 # Install Fastlane
-which fastlane > /dev/null && alreadyinstallmessage "Fastlane" || brew cask install fastlane
+# which fastlane > /dev/null && alreadyinstallmessage "Fastlane" || brew cask install fastlane
 
 # Install Ruby-build
 which ruby-build > /dev/null && alreadyinstallmessage "Ruby-build" || brew install ruby-build
