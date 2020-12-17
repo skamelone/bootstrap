@@ -20,10 +20,10 @@ require 'json'
 
 def main
   data = {
-    'title' => 'Yabai Size Window',
+    'title' => 'Yabai Resize Window',
     'rules' => [
       {
-        'description' => 'Yabai Size Window',
+        'description' => 'Yabai Resize Window',
         'manipulators' => [
           generate_launcher_mode('h', [], [{ 'shell_command' => "/usr/local/bin/yabai -m window --resize left:-20:0" }]),
           generate_launcher_mode('l', [], [{ 'shell_command' => "/usr/local/bin/yabai -m window --resize right:20:0" }]),
@@ -57,7 +57,7 @@ def generate_launcher_mode(from_key_code, mandatory_modifiers, to)
     'conditions' => [
       {
         'type' => 'variable_if',
-        'name' => 'yabai_mode',
+        'name' => 'yabai_resize_mode',
         'value' => 1,
       },
     ],
@@ -80,13 +80,13 @@ def generate_launcher_mode(from_key_code, mandatory_modifiers, to)
       ],
       'simultaneous_options' => {
         'detect_key_down_uninterruptedly' => true,
-        'key_down_order' => 'insensitive',
-        'key_up_order' => 'insensitive',
-        'key_up_when' => 'any',
+        'key_down_order' => 'strict',
+        'key_up_order' => 'strict_inverse',
+        'key_up_when' => 'all',
         'to_after_key_up' => [
           {
             'set_variable' => {
-              'name' => 'yabai_mode',
+              'name' => 'yabai_resize_mode',
               'value' => 0,
             },
           },
@@ -102,7 +102,7 @@ def generate_launcher_mode(from_key_code, mandatory_modifiers, to)
     'to' => [
       {
         'set_variable' => {
-          'name' => 'yabai_mode',
+          'name' => 'yabai_resize_mode',
           'value' => 1,
         },
       },

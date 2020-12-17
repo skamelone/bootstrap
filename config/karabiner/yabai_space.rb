@@ -62,7 +62,7 @@ def generate_launcher_mode(from_key_code, mandatory_modifiers, to)
     'conditions' => [
       {
         'type' => 'variable_if',
-        'name' => 'yabai_mode',
+        'name' => 'yabai_focus_space_mode',
         'value' => 1,
       },
     ],
@@ -85,13 +85,13 @@ def generate_launcher_mode(from_key_code, mandatory_modifiers, to)
       ],
       'simultaneous_options' => {
         'detect_key_down_uninterruptedly' => true,
-        'key_down_order' => 'insensitive',
-        'key_up_order' => 'insensitive',
-        'key_up_when' => 'any',
+        'key_down_order' => 'strict',
+        'key_up_order' => 'strict_inverse',
+        'key_up_when' => 'all',
         'to_after_key_up' => [
           {
             'set_variable' => {
-              'name' => 'yabai_mode',
+              'name' => 'yabai_focus_space_mode',
               'value' => 0,
             },
           },
@@ -107,7 +107,7 @@ def generate_launcher_mode(from_key_code, mandatory_modifiers, to)
     'to' => [
       {
         'set_variable' => {
-          'name' => 'yabai_mode',
+          'name' => 'yabai_focus_space_mode',
           'value' => 1,
         },
       },

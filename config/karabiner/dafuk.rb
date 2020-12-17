@@ -90,9 +90,9 @@ def generate_launcher_mode(from_key_code, mandatory_modifiers, to)
       ],
       'simultaneous_options' => {
         'detect_key_down_uninterruptedly' => true,
-        'key_down_order' => 'insensitive',
-        'key_up_order' => 'insensitive',
-        'key_up_when' => 'any',
+        'key_down_order' => 'strict',
+        'key_up_order' => 'strict_inverse',
+        'key_up_when' => 'all',
         'to_after_key_up' => [
           {
             'set_variable' => {
