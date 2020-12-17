@@ -10,8 +10,7 @@
 def parameters
   {
     :simultaneous_threshold_milliseconds => 500,
-    :trigger_key1 => 'd',
-    :trigger_key2 => 'f',
+    :trigger_key => 'f',
   }
 end
 
@@ -21,10 +20,10 @@ require 'json'
 
 def main
   data = {
-    'title' => '(D)a (F)uck Mode',
+    'title' => 'Focus Mode',
     'rules' => [
       {
-        'description' => '(D)a (F)uck Mode',
+        'description' => 'Focus Mode',
         'manipulators' => [
           generate_launcher_mode('i', [], [{ 'key_code' => "open_bracket", 'modifiers' => ["right_command", "right_shift"] }]),
           generate_launcher_mode('o', [], [{ 'key_code' => "close_bracket", 'modifiers' => ["right_command", "right_shift"] }]),
@@ -79,10 +78,7 @@ def generate_launcher_mode(from_key_code, mandatory_modifiers, to)
     'from' => {
       'simultaneous' => [
         {
-          'key_code' => parameters[:trigger_key1],
-        },
-        {
-          'key_code' => parameters[:trigger_key2],
+          'key_code' => parameters[:trigger_key],
         },
         {
           'key_code' => from_key_code,
