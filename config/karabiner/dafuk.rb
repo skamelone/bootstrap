@@ -92,7 +92,7 @@ def generate_launcher_mode(from_key_code, mandatory_modifiers, to)
         'detect_key_down_uninterruptedly' => true,
         'key_down_order' => 'strict',
         'key_up_order' => 'strict_inverse',
-        'key_up_when' => 'all',
+        'key_up_when' => 'any',
         'to_after_key_up' => [
           {
             'set_variable' => {
