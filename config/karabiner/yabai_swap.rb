@@ -31,6 +31,7 @@ def main
           generate_launcher_mode('k', [], [{ 'shell_command' => "/usr/local/bin/yabai -m window --swap south" }]),
           generate_launcher_mode('r', [], [{ 'shell_command' => "/usr/local/bin/yabai -m space --rotate 90" }]),
           generate_launcher_mode('f', [], [{ 'shell_command' => "/usr/local/bin/yabai -m window --toggle zoom-parent" }]),
+          generate_launcher_mode('g', [], [{ 'shell_command' => "/usr/local/bin/yabai -m space --toggle padding; /usr/local/bin/yabai -m space --toggle gap" }]),
 
         ].flatten,
       },
