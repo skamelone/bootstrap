@@ -1,13 +1,14 @@
 #!/usr/bin/env sh
 
 yabai -m config external_bar                 all:26:0
+
 yabai -m config mouse_follows_focus          off
 yabai -m config focus_follows_mouse          off
 yabai -m config window_topmost               off
 yabai -m config window_opacity               on
 yabai -m config window_opacity_duration      0.1
 yabai -m config active_window_opacity        1.0
-yabai -m config normal_window_opacity        1.0
+yabai -m config normal_window_opacity        0.9
 yabai -m config window_shadow                float
 yabai -m config split_ratio                  0.6
 yabai -m config auto_balance                 off
@@ -32,7 +33,6 @@ done
 # Comms
 yabai -m space 1 --label "Comms"
 
-yabai -m rule --add app=Caprine space=^"Comms"
 yabai -m rule --add app=Canary Mail space=^"Comms"
 yabai -m rule --add app=Slack space=^"Comms"
 
@@ -41,23 +41,42 @@ yabai -m space 2 --label "Design"
 
 # Code
 yabai -m space 3 --label "Code"
-yabai -m rule --add app=Alacritty space=^"Code"
 yabai -m rule --add app=Android Studio space=^"Code"
 yabai -m rule --add app=Intellij space=^"Code"
 
 # Preview
 yabai -m space 3 --label "Preview"
 yabai -m rule --add app=Local space=^"Preview"
-yabai -m rule --add app=Firefox space=^"Preview"
+#yabai -m rule --add app="Google Chrome" space=^"Preview"
 
 # Jam
 yabai -m space 5 --label "Jam"
+
 yabai -m rule --add app=Spotify space=^"Jam"
 
 # Other rules
 
 yabai -m rule --add app="System Preferences" manage=off layer=above
 yabai -m rule --add title="Picture-in-Picture" sticky=on opacity=1
+yabai -m rule --add title='Updating ' manage=off layer=above border=off
+yabai -m rule --add title='^Opening ' manage=off layer=above border=off
+yabai -m rule --add title='^Preview ' manage=off layer=above border=off
+
+yabai -m rule --add app="^Finder$" sticky=on layer=above manage=off 
+yabai -m rule --add app="^IINA$" sticky=on layer=above manage=off 
+yabai -m rule --add title="^Alfred Preferences$" sticky=on layer=above manage=off 
+yabai -m rule --add app="^Activity Monitor$" sticky=on layer=above manage=off 
+yabai -m rule --add title='^Preferences$' manage=off layer=above border=off
+yabai -m rule --add title='^Software Update$' manage=off layer=above border=off
+yabai -m rule --add app="^Karabiner-Elements$" sticky=on layer=above manage=off 
+yabai -m rule --add app="^Karabiner-EventViewer$" sticky=on layer=above manage=off 
+yabai -m rule --add app="^Fantastical$" sticky=on layer=above manage=off 
+yabai -m rule --add app="^Spotify$" sticky=on layer=above manage=off 
+yabai -m rule --add app="^Messages$" sticky=on layer=above manage=off 
+yabai -m rule --add app="^App Store$" sticky=on layer=above manage=off 
+
+killall limelight &> /dev/null
+limelight -c ~/.config/limelight/config &>/dev/null &
 
 echo "yabai configuration loaded.."
 
