@@ -56,24 +56,24 @@ yabai -m rule --add app=Spotify space=^"Jam"
 
 # Other rules
 
-yabai -m rule --add app="System Preferences" manage=off layer=above
-yabai -m rule --add title="Picture-in-Picture" sticky=on opacity=1
+yabai -m rule --add app="System Preferences" manage=off layer=above border=off
+yabai -m rule --add title="Picture-in-Picture" sticky=on opacity=1 border=off
 yabai -m rule --add title='Updating ' manage=off layer=above border=off
 yabai -m rule --add title='^Opening ' manage=off layer=above border=off
 yabai -m rule --add title='^Preview ' manage=off layer=above border=off
 
-yabai -m rule --add app="^Finder$" sticky=on layer=above manage=off 
-yabai -m rule --add app="^IINA$" sticky=on layer=above manage=off 
-yabai -m rule --add title="^Alfred Preferences$" sticky=on layer=above manage=off 
-yabai -m rule --add app="^Activity Monitor$" sticky=on layer=above manage=off 
+yabai -m rule --add app="^Finder$" sticky=on layer=above manage=off border=off
+yabai -m rule --add app="^IINA$" sticky=on layer=above manage=off border=off
+yabai -m rule --add title="^Alfred Preferences$" sticky=on layer=above manage=off border=off
+yabai -m rule --add app="^Activity Monitor$" sticky=on layer=above manage=off border=off 
 yabai -m rule --add title='^Preferences$' manage=off layer=above border=off
 yabai -m rule --add title='^Software Update$' manage=off layer=above border=off
-yabai -m rule --add app="^Karabiner-Elements$" sticky=on layer=above manage=off 
-yabai -m rule --add app="^Karabiner-EventViewer$" sticky=on layer=above manage=off 
-yabai -m rule --add app="^Fantastical$" sticky=on layer=above manage=off 
-yabai -m rule --add app="^Spotify$" sticky=on layer=above manage=off 
-yabai -m rule --add app="^Messages$" sticky=on layer=above manage=off 
-yabai -m rule --add app="^App Store$" sticky=on layer=above manage=off 
+yabai -m rule --add app="^Karabiner-Elements$" sticky=on layer=above manage=off border=off 
+yabai -m rule --add app="^Karabiner-EventViewer$" sticky=on layer=above manage=off border=off 
+yabai -m rule --add app="^Fantastical$" sticky=on layer=above manage=off border=off 
+yabai -m rule --add app="^Spotify$" sticky=on layer=above manage=off border=off 
+yabai -m rule --add app="^Messages$" sticky=on layer=above manage=off border=off 
+yabai -m rule --add app="^App Store$" sticky=on layer=above manage=off border=off 
 
 killall limelight &> /dev/null
 limelight -c ~/.config/limelight/config &>/dev/null &

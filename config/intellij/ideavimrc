@@ -1,0 +1,86 @@
+set ignorecase
+set smartcase
+set surround
+set multiple-cursors
+set commentary
+set scrolloff=3         " 3 lines above/below cursor when scrolling
+
+" Integrate with system clipboard
+set clipboard=unnamedplus,unnamed
+
+let mapleader = " "
+
+imap ,. <Esc>
+vmap ,. <Esc>
+
+" Use Q for formatting the current paragraph (or visual selection)
+vmap Q gq
+nmap Q gqap
+
+" These create newlines like o and O but stay in normal mode
+nmap zj o<Esc>k
+nmap zk O<Esc>j
+
+" key bindings for quickly moving between windows
+" h left, l right, k up, j down
+nmap <leader>h <c-w>h
+nmap <leader>l <c-w>l
+nmap <leader>k <c-w>k
+nmap <leader>j <c-w>j
+
+nmap <leader>b :action Back<cr>
+nmap <leader>f :action Forward<cr>
+
+nmap <leader>ga :action GotoAction<cr>
+nmap <leader>gd :action GotoDeclaration<cr>
+nmap <leader>gf :action GotoFile<cr>
+nmap <leader>gc :action GotoClass<cr>
+nmap <leader>gs :action GotoSymbol<cr>
+nmap <leader>gr :action GotoRelated<cr>
+nmap <leader>gg :action ActivateVersionControlToolWindow<cr>
+nmap <leader>cl :action CommentByLineComment<cr>
+
+nmap <leader>fs :action FileStructurePopup<cr>
+nmap <leader>le :action ShowErrorDescription<cr>
+nmap <leader>su :action ShowUsages<cr>
+nmap <leader>si :action ShowIntentionActions<cr>
+nmap <leader>sh :action LocalHistory.ShowHistory<cr>
+
+nmap <leader>gl :action JumpToLastChange<CR>
+nmap <leader><Backspace> :action Back<CR>
+nmap <leader>fo :action Forward<CR>
+nnoremap <leader><Space> :action RecentFiles<CR>
+
+nnoremap <leader>gq :action ReformatCode<cr>
+
+nnoremap <Leader>/ :action FindInPath<cr>
+nnoremap <leader>fu :action FindUsages<cr>
+nnoremap <Leader>rc :action ChooseRunConfiguration<CR>
+nnoremap <Leader>rd :action Debug<CR>
+nnoremap <Leader>re :action RecentFiles<cr>
+nnoremap <leader>rr :action Run<CR>
+nnoremap <leader>kk :action Stop<CR>
+nnoremap <Leader>se :action SearchEverywhere<CR>
+nnoremap <Leader>oi :action OptimizeImports<CR>
+nnoremap <Leader>re :action RenameElement<CR>
+nnoremap <Leader>rf :action RenameFile<CR>
+nnoremap <Leader>sa :action Refactorings.QuickListPopupAction<CR>
+nmap == :action ReformatCode<cr>
+" Press `f` to activate AceJump
+map f :action AceAction<CR>
+" Press `F` to activate Target Mode
+map F :action AceTargetAction<CR>
+" Press `g` to activate Line Mode
+map ; :action AceLineAction<CR>
+
+nmap <leader>t :action ActivateTerminalToolWindow<cr>
+
+" Switches between .cc and .h file!
+
+" IdeaVim uses 'a' for alt instead of Vim's 'm'
+nmap <a-j> 15gj
+nmap <a-k> 15gk
+
+" Won't work in visual mode (with vmap) for some reason.
+" Use default map of <c-/> for that.
+nmap gcc :action CommentByLineComment<cr>
