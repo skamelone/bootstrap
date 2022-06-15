@@ -7,11 +7,10 @@
 		<key>PATH</key>
 		<string>/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware Fusion.app/Contents/Public:/usr/local/go/bin:/Applications/Little Snitch.app/Contents/Components:/opt/X11/bin:/Library/Apple/usr/bin:/usr/local/sbin</string>
 	</dict>
-	<key>KeepAlive</key>
-	<dict>
-		<key>SuccessfulExit</key>
-		<true/>
-	</dict>
+    <key>KeepAlive</key>
+    <true/>
+    <key>RunAtLoad</key>
+    <true/>
 	<key>Label</key>
 	<string>com.skamelone.limelight</string>
 	<key>LaunchOnlyOnce</key>
