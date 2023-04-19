@@ -1,0 +1,184 @@
+{
+ :devices {:apple [{:vendor_id 1452}]
+           :kinesis [{:vendor_id 10730}]}
+
+ :applications {:browsers ["^com\\.brave\\.Browser$", "^company\\.thebrowser\\.Browser$"]
+                :jetbrains ["^com\\.jetbrains\\.intellij$", "^com\\.google\\.android\\.studio$"]
+                :slack ["^com\\.tinyspeck\\.slackmacgap$"]
+                :terminals ["^org\\.alacritty$", "^com\\.googlecode\\.iterm2$"] 
+                :xcode ["^com\\.apple\\.dt\\.Xcode$"] }
+
+ :input-sources {:us {:input_mode_id ""
+                      :input_source_id "com.apple.keylayout.US"
+                      :language "en"}}
+
+ :templates {:launch "osascript -e 'tell application \"%s\" to activate'"
+             :yabai  "/opt/homebrew/bin/yabai -m %s"
+             :yabai-f  "/opt/homebrew/bin/yabai -m window --focus %s || /opt/homebrew/bin/yabai -m display --focus %s" }
+
+ :tos {:hyper {:key :left_control :modi {:mandatory [:left_command :left_shift :left_option]}}}
+
+ :simlayer-threshold 500
+
+ :simlayers {:jetbrains-mode {:key :semicolon :condi :jetbrains}
+             :meet-mode {:key :semicolon :condi :browsers}
+             :slack-mode {:key :semicolon :condi :slack}
+             :symbol-mode {:key :spacebar} 
+             :terminal-mode {:key :semicolon :condi :terminals}
+             :xcode-mode {:key :semicolon :condi :xcode} 
+             :yabai-focus-mode {:key :f}
+             :yabai-swap-mode {:key :s}
+             :yabai-move-mode {:key :d}
+             :yabai-resize-left-mode {:key :a}
+             :yabai-resize-right-mode {:key :g} }
+
+ :layers {:vim-mode {:key :tab :alone {:key :tab}}}
+
+ :main
+ [
+  {:des "Right-Command to Command-tab if alone"
+         :rules [[:right_command :right_command nil {:alone [:!Ctab]}]]}
+
+  {:des "Quit application [⌘-Q x 2]"
+         :rules [[:!C#Pq [:!Cq ["command-q" 0]] ["command-q" 1]]
+                 [:!C#Pq ["command-q" 1] nil {:delayed {:invoked ["command-q" 0] :canceled ["commandq" 0]}}] ]}
+
+  {:des "Launch Mode [HYPER]"
+         :rules [[:##caps_lock :hyper :apple {:alone :escape}]
+                 [:!!d [:launch "Xcode"]]
+                 [:!!f [:launch "Finder"]]
+                 [:!!g [:launch "Brave"]]
+                 [:!!i [:launch "Alacritty"]]
+                 [:!!j [:launch "Slack"]]
+                 [:!!k [:!CTOf]]                  ;; HomeRow - Find  
+                 [:!!l [:!CTOw]]                  ;; HomeRow - Find Window 
+                 [:!!y [:!CS4]]                   ;; Screenshot
+                 [:!!p [:launch "1Password"]] 
+                 [:!!r [:launch "Mission Control"]] 
+                 [:!!s [:launch "Sublime Merge"]]
+                 [:!!t [:launch "Sublime Text"]] ]}
+
+  {:des "Vim Mode [TAB]"
+         :rules [:vim-mode
+                 [:d [:!Cright_arrow :!Cdelete_or_backspace :delete_or_backspace]] ;; delete line 'dd'
+                 [:j :down_arrow]
+                 [:k :up_arrow]
+                 [:l :right_arrow]
+                 [:h :left_arrow]
+                 [:u :home]
+                 [:i :end]
+                 [:b :!Oleft_arrow]
+                 [:w :!Oright_arrow]
+                 [:n :!Odelete_or_backspace]
+                 [:m :delete_or_backspace]
+                 [:comma :delete_forward]
+                 [:period :!Odelete_forward] ]}
+
+  {:des "Yabai - Focus Mode [F]"
+         :rules [:yabai-focus-mode
+                 [:i :!CSopen_bracket]          ;; open previous tab
+                 [:o :!CSclose_bracket]         ;; open next tab
+                 [:l [:yabai-f "east" "east"]]
+                 [:h [:yabai-f "west" "west"]]
+                 [:j [:yabai-f "south" "south"]]
+                 [:k [:yabai-f "north" "north"]]
+                 [:semicolon [:yabai "space --focus next"]] 
+                 [:p [:yabai "space --focus prev"]] 
+                 [:period [:yabai "config layout bsp"]]
+                 [:spacebar [:yabai "config layout stack"]] ]}
+
+  {:des "Yabai - Swap Mode [S]"
+         :rules [:yabai-swap-mode
+                 [:l [:yabai "window --swap east"]] 
+                 [:h [:yabai "window --swap west"]] 
+                 [:j [:yabai "window --swap south"]] 
+                 [:r [:yabai " space --rotate 90"]]
+                 [:k [:yabai "window --swap north"]] ]}
+
+  {:des "Yabai - Move Mode [D]"
+         :rules [:yabai-move-mode
+                 [:l [:yabai "window --display east" :yabai "display --focus east"]] 
+                 [:h [:yabai "window --display west" :yabai "display --focus west"]] 
+                 [:j [:yabai "window --display south" :yabai "display --focus south"]] 
+                 [:k [:yabai "window --display north" :yabai "display --focus north"]] ]}
+
+  {:des "Yabai - Resize Left Mode [A]"
+         :rules [:yabai-resize-left-mode
+                 [:l [:yabai "window --resize left:40:0"]] 
+                 [:h [:yabai "window --resize left:-40:0"]] ]}
+
+  {:des "Yabai - Resize Right Mode [G]"
+         :rules [:yabai-resize-right-mode
+                 [:l [:yabai "window --resize right:40:0"]] 
+                 [:h [:yabai "window --resize right:-40:0"]] ]}
+
+  {:des "Xcode Mode [;]"
+         :rules [:xcode-mode
+                 [:3 :!CTleft_arrow]            ;; go backward
+                 [:4 :!CTright_arrow]           ;; go forward
+                 [:g :!CSo]                     ;; Quick Open
+                 [:h :!CTSh]                    ;; Find Hierarchy
+                 [:r :!CSj]                     ;; Reveal in Project Navigator
+                 [:f :!CSf]                     ;; Find in Project
+                 [:m :!Tkeypad_6]               ;; Go to Methods
+                 [:b :!Cb]                      ;; Build
+                 [:r :!Cr]                      ;; Run
+                 [:x :!Cperiod]                 ;; Stop
+                 [:q :!Ckeypad_1]               ;; Show Navigator
+                 [:w [:!Ckeypad_0 :!CSy]]       ;; Edit
+                 [:d :!Tgrave_accent_and_tilde] ;; Window Focus
+                 [:j :!Ti]                      ;; Reformat
+                 [:s :!CTo]                     ;; Jump to Definition
+                 [:a :!CSa]                     ;; Show menu action
+                 [:7 :!CTr] ]}                  ;; Run without build
+
+  {:des "Jetbrains Mode [;]"
+         :rules [:jetbrains-mode
+                 [:g :!COo]                     ;; Quick mode
+                 [:3 :!Copen_bracket]           ;; Go Backward
+                 [:4 :!Cclose_bracket]          ;; Go Forward
+                 [:a :!Cb] ]}                   ;; Go Declaration
+
+  {:des "Terminal Mode [;]"
+         :rules [:terminal-mode
+                 [:spacebar [:!Ta :!S5]]        ;; split vertically
+                 [:t [:!Ta :!Squote]]           ;; split horizontally
+                 [:f [:!Ta :f]]                 ;; search session
+                 [:a [:!Ta :h]]                 ;; go to left panel
+                 [:l [:!Ta :l]]                 ;; go to right panel
+                 [:j [:!Ta :j]]                 ;; go to south panel
+                 [:k [:!Ta :k]]                 ;; go to north panel
+                 [:s [:!Ta :o]]                 ;; swap panes
+                 [:c [:!Ta :open_bracket]]      ;; copy mode
+                 [:r :!Tr]                      ;; search history
+                 [:g :!Ty]                      ;; go to favorite folders
+                 [:d :!Tu]                      ;; go to subdirectory
+                 [:x [:!Ta :x]] ]}              ;; kill pane
+
+  {:des "Slack Mode [;]"
+         :rules [:slack-mode
+                 [:g :!Ck]                      ;; go to conversation
+                 [:a :!CSbackslash]             ;; reply with emoji
+                 [:3 :!Copen_bracket]           ;; go back in history
+                 [:4 :!Cclose_bracket]          ;; go forward in history
+                 [:r :!CSd] ]}                  ;; show/hide left sidebar
+
+  {:des "Google Meet Mode [;]"
+         :rules [:meet-mode
+                 [:h :!Ce]                      ;; show/hide camera
+                 [:x :!Cd]                      ;; mute/unmute
+                 [:c :!CTc]                     ;; toggle chat
+                 [:5 :!CTh] ]}                  ;; raise/lower hand
+
+  {:des "Symbol Mode [spacebar]"
+         :rules [:symbol-mode
+                 [:condi :symbol-mode :apple]   ;; Only for Apple keyboard
+                 [:h :!Sgrave_accent_and_tilde] ;; h -> ~
+                 [:j :!S9]                      ;; j -> (
+                 [:k :!S0]                      ;; k -> )
+                 [:u :!Sopen_bracket]           ;; u -> {
+                 [:i :!Sclose_bracket]          ;; i -> }
+                  ]} 
+]
+}
+
